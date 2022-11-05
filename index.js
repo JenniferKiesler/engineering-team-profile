@@ -1,7 +1,40 @@
 const fs = require('fs')
 const inquirer = require('inquirer')
+const generateHTML = require('./src/generateHTML.js')
 
 const teamMembers = []
+
+inquirer.prompt([
+    {
+        type: 'input',
+        name: 'name',
+        message: "What is the team manager's name?"
+    },
+    {
+        type: 'number',
+        name: 'ID',
+        message: "What is the team manager's employee ID?"
+    },
+    {
+        type: 'input',
+        name: 'email',
+        message: "What is the team manager's email address?"
+    },
+    {
+        type: 'number',
+        name: 'officeNumber',
+        message: "What is the team manager's office number?"
+    }
+])
+.then((answers) => {
+    answers.role = 'manager'
+    console.log(answers)
+    teamMembers.push(answers)
+    console.log(teamMembers)
+    buildTeam()
+})
+.catch(err => console.log(err))
+
 
 function buildTeam() {
     inquirer.prompt([
@@ -45,6 +78,7 @@ function buildTeam() {
             .then(() => {
                 buildTeam()
             })
+            .catch(err => console.log(err))
         } else if (answer.buildTeam === 'intern') {
             inquirer.prompt([
                 {
@@ -76,39 +110,11 @@ function buildTeam() {
             .then(() => {
                 buildTeam()
             })
+            .catch(err => console.log(err))
         } else if (answer.buildTeam === 'finish building team') {
-            console.log(teamMembers)
+            // console.log(teamMembers)
+            generateHTML.generateManagerCard(teamMembers)
         }
-    })
-}
-
-inquirer
-    .prompt([
-        {
-            type: 'input',
-            name: 'name',
-            message: "What is the team manager's name?"
-        },
-        {
-            type: 'number',
-            name: 'ID',
-            message: "What is the team manager's employee ID?"
-        },
-        {
-            type: 'input',
-            name: 'email',
-            message: "What is the team manager's email address?"
-        },
-        {
-            type: 'number',
-            name: 'officeNumber',
-            message: "What is the team manager's office number?"
-        }
-    ])
-    .then((answers) => {
-        console.log(answers)
-        teamMembers.push(answers)
-        console.log(teamMembers)
-        buildTeam()
     })
     .catch(err => console.log(err))
+}
