@@ -1,6 +1,8 @@
 const fs = require('fs')
 const inquirer = require('inquirer')
 
+const teamMembers = []
+
 function buildTeam() {
     inquirer.prompt([
         {
@@ -37,6 +39,8 @@ function buildTeam() {
             ])
             .then((answers) => {
                 console.log(answers)
+                teamMembers.push(answers)
+                console.log(teamMembers)
             })
             .then(() => {
                 buildTeam()
@@ -66,12 +70,14 @@ function buildTeam() {
             ])
             .then((answers) => {
                 console.log(answers)
+                teamMembers.push(answers)
+                console.log(teamMembers)
             })
             .then(() => {
                 buildTeam()
             })
         } else if (answer.buildTeam === 'finish building team') {
-            return
+            console.log(teamMembers)
         }
     })
 }
@@ -101,6 +107,8 @@ inquirer
     ])
     .then((answers) => {
         console.log(answers)
+        teamMembers.push(answers)
+        console.log(teamMembers)
         buildTeam()
     })
     .catch(err => console.log(err))
