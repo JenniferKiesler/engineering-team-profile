@@ -1,8 +1,12 @@
 const fs = require('fs')
 const inquirer = require('inquirer')
 const generateHTML = require('./src/generateHTML.js')
+const Manager = require('./lib/Manager')
+const Engineer = require('./lib/Engineer')
+const Intern = require('./lib/Intern')
 
-const teamMembers = []
+const engineers = []
+const interns = []
 
 inquirer.prompt([
     {
@@ -12,7 +16,7 @@ inquirer.prompt([
     },
     {
         type: 'number',
-        name: 'ID',
+        name: 'id',
         message: "What is the team manager's employee ID?"
     },
     {
@@ -27,10 +31,10 @@ inquirer.prompt([
     }
 ])
 .then((answers) => {
-    answers.role = 'manager'
-    console.log(answers)
-    teamMembers.push(answers)
-    console.log(teamMembers)
+    const manager = new Manager(answers.name, answers.id, answers.email, answers.officeNumber)
+    // console.log(manager)
+    const managerHTML = generateHTML.generateManagerCard(manager)
+    console.log(managerHTML)
     buildTeam()
 })
 .catch(err => console.log(err))
@@ -56,7 +60,7 @@ function buildTeam() {
                 },
                 {
                     type: 'number',
-                    name: 'ID',
+                    name: 'id',
                     message: "What is the engineer's employee ID?"
                 },
                 {
@@ -71,9 +75,13 @@ function buildTeam() {
                 },
             ])
             .then((answers) => {
-                console.log(answers)
-                teamMembers.push(answers)
-                console.log(teamMembers)
+                const engineer = new Engineer(answers.name, answers.id, answers.email, answers.username)
+                console.log(engineer)
+                engineers.push(engineer)
+                console.log(engineers)
+                // console.log(answers)
+                // teamMembers.push(answers)
+                // console.log(teamMembers)
             })
             .then(() => {
                 buildTeam()
@@ -88,7 +96,7 @@ function buildTeam() {
                 },
                 {
                     type: 'number',
-                    name: 'ID',
+                    name: 'id',
                     message: "What is the intern's employee ID?"
                 },
                 {
@@ -113,7 +121,8 @@ function buildTeam() {
             .catch(err => console.log(err))
         } else if (answer.buildTeam === 'finish building team') {
             // console.log(teamMembers)
-            generateHTML.generateManagerCard(teamMembers)
+            const engineersHTML = generateHTML.generateEngineerCard(engineers)
+            console.log(engineersHTML)
         }
     })
     .catch(err => console.log(err))
