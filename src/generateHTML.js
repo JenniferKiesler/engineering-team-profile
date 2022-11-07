@@ -44,8 +44,31 @@ const generateEngineerCard = (data) => {
     `
 }
 
+const generateInternCard = (data) => {
+    const {
+        name,
+        id,
+        email,
+        school
+    } = data
+
+    return `
+    <div class="card shadow mx-2 mb-5 rounded bg-light" style="width: 18rem;">
+        <div class="card-header bg-info text-white">
+            <h3>${name}</h3>
+            <h4><i class="bi bi-mortarboard-fill"></i> Intern</h4>
+        </div>
+        <ul class="list-group mx-auto my-3 w-75">
+            <li class="list-group-item">ID: ${id}</li>
+            <li class="list-group-item">Email: <a href="mailto:${email}.com">${email}</a></li>
+            <li class="list-group-item">School: ${school}</li>
+        </ul>
+    </div>
+    `
+}
 
 module.exports = {
     generateManagerCard,
-    generateEngineerCard
+    generateEngineerCard,
+    generateInternCard,
 }

@@ -5,8 +5,9 @@ const Manager = require('./lib/Manager')
 const Engineer = require('./lib/Engineer')
 const Intern = require('./lib/Intern')
 
+let managerCard = ``
 let engineerCards = ``
-let interns = []
+let internCards = ``
 
 inquirer.prompt([
     {
@@ -33,8 +34,8 @@ inquirer.prompt([
 .then((answers) => {
     const manager = new Manager(answers.name, answers.id, answers.email, answers.officeNumber)
     // console.log(manager)
-    const managerHTML = generateHTML.generateManagerCard(manager)
-    console.log(managerHTML)
+    managerCard = generateHTML.generateManagerCard(manager)
+    console.log(managerCard)
     buildTeam()
 })
 .catch(err => console.log(err))
@@ -110,16 +111,21 @@ function buildTeam() {
                 },
             ])
             .then((answers) => {
-                console.log(answers)
-                teamMembers.push(answers)
-                console.log(teamMembers)
+                const intern = new Intern(answers.name, answers.id, answers.email, answers.school)
+                console.log(intern)
+                const internCard = generateHTML.generateInternCard(intern)
+                console.log(internCard)
+                internCards += internCard
+                console.log(internCards)
             })
             .then(() => {
                 buildTeam()
             })
             .catch(err => console.log(err))
         } else if (answer.buildTeam === 'finish building team') {
+            console.log(managerCard)
             console.log(engineerCards)
+            console.log(internCards)
         }
     })
     .catch(err => console.log(err))
