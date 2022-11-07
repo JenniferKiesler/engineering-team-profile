@@ -41,9 +41,9 @@ describe("Manager", () => {
         const officeNumber = 1
 
         const manager = new Manager(name, id, email, officeNumber)
-        const managerEmail = manager.getEmail();
+        const managerOfficeNum = manager.getOfficeNumber();
 
-        expect(managerEmail).toBe(email)
+        expect(managerOfficeNum).toBe(officeNumber)
     })
     it('Has the correct role', () => {
         const role = "Manager"
