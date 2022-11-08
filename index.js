@@ -125,6 +125,12 @@ function buildTeam() {
         } else if (answer.buildTeam === 'finish building team') {
             const html = generateHTML.generateHTML(managerCard, engineerCards, internCards)
             console.log(html)
+
+            fs.writeFile('./dist/team-profile.html', html, (err) => {
+                if (err) throw err
+
+                console.log('HTML saved!')
+            })
         }
     })
     .catch(err => console.log(err))
