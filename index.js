@@ -123,9 +123,8 @@ function buildTeam() {
             })
             .catch(err => console.log(err))
         } else if (answer.buildTeam === 'finish building team') {
-            console.log(managerCard)
-            console.log(engineerCards)
-            console.log(internCards)
+            const html = generateHTML.generateHTML(managerCard, engineerCards, internCards)
+            console.log(html)
         }
     })
     .catch(err => console.log(err))
