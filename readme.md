@@ -19,6 +19,8 @@ node index.js
 
 ## Visuals
 
+![screenshot of team profile](./assets/team-profile-screenshot.png)
+
 ## Walkthrough Video
 
 ## Tests
