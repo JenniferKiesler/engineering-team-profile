@@ -12,7 +12,7 @@ When the email address in the HTML is clicked, the default email program opens a
 
 ## Installation
 
-To use the [Inquirer](https://www.npmjs.com/package/inquirer/v/8.2.4) version 8.2.4 and [Jest](https://www.npmjs.com/package/jest) packages, use the following command:
+To use the [Inquirer](https://www.npmjs.com/package/inquirer/v/8.2.4) version 8.2.4 and [Jest](https://www.npmjs.com/package/jest) packages needed for this application, use the following command:
 ```
 npm install
 ``` 
