@@ -35,7 +35,7 @@ inquirer.prompt([
     const manager = new Manager(answers.name, answers.id, answers.email, answers.officeNumber)
     // console.log(manager)
     managerCard = generateHTML.generateManagerCard(manager)
-    console.log(managerCard)
+    // console.log(managerCard)
     buildTeam()
 })
 .catch(err => console.log(err))
@@ -51,7 +51,7 @@ function buildTeam() {
         }
     ])
     .then((answer) => {
-        console.log(answer)
+        // console.log(answer)
         if (answer.buildTeam === 'engineer') {
             inquirer.prompt([
                 {
@@ -77,11 +77,11 @@ function buildTeam() {
             ])
             .then((answers) => {
                 const engineer = new Engineer(answers.name, answers.id, answers.email, answers.username)
-                console.log(engineer)
+                // console.log(engineer)
                 const engineerCard = generateHTML.generateEngineerCard(engineer)
-                console.log(engineerCard)
+                // console.log(engineerCard)
                 engineerCards += engineerCard
-                console.log(engineerCards)
+                // console.log(engineerCards)
             })
             .then(() => {
                 buildTeam()
@@ -112,11 +112,11 @@ function buildTeam() {
             ])
             .then((answers) => {
                 const intern = new Intern(answers.name, answers.id, answers.email, answers.school)
-                console.log(intern)
+                // console.log(intern)
                 const internCard = generateHTML.generateInternCard(intern)
-                console.log(internCard)
+                // console.log(internCard)
                 internCards += internCard
-                console.log(internCards)
+                // console.log(internCards)
             })
             .then(() => {
                 buildTeam()
@@ -124,7 +124,7 @@ function buildTeam() {
             .catch(err => console.log(err))
         } else if (answer.buildTeam === 'finish building team') {
             const html = generateHTML.generateHTML(managerCard, engineerCards, internCards)
-            console.log(html)
+            // console.log(html)
 
             fs.writeFile('./dist/team-profile.html', html, (err) => {
                 if (err) throw err

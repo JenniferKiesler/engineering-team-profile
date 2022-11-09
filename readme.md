@@ -23,6 +23,12 @@ node index.js
 
 ## Walkthrough Video
 
+Use the link below to view a walkthrough of this application.
+
+https://drive.google.com/file/d/1_IJZwNqhrA_7Wcx9Ipxg7PLBd0dDaQ9O/view?usp=share_link
+
+If the video is blurry, download the video.
+
 ## Tests
 
 This application uses [Jest](https://www.npmjs.com/package/jest) for running the tests.
