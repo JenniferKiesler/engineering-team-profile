@@ -10,6 +10,13 @@ When the user clicks on finish building the team, the user exits the application
 
 When the email address in the HTML is clicked, the default email program opens and populates the TO field of the email with the address. When the GitHub username is clicked, the GitHub profile opens in a new tab. 
 
+## Installation
+
+To use the [Inquirer](https://www.npmjs.com/package/inquirer/v/8.2.4) version 8.2.4 and [Jest](https://www.npmjs.com/package/jest) packages, use the following command:
+```
+npm install
+``` 
+
 ## Usage
 
 This application is invoked by using the following command:
