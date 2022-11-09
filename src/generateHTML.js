@@ -38,7 +38,7 @@ const generateEngineerCard = (data) => {
                 <ul class="list-group mx-auto my-3 w-75">
                     <li class="list-group-item">ID: ${id}</li>
                     <li class="list-group-item">Email: <a href="mailto:${email}.com">${email}</a></li>
-                    <li class="list-group-item">GitHub: <a href="https://github.com/${github}">${github}</a></li>
+                    <li class="list-group-item">GitHub: <a href="https://github.com/${github}" target="_blank">${github}</a></li>
                 </ul>
             </div>
     `
